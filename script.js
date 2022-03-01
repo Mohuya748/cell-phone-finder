@@ -1,18 +1,28 @@
-
+const errorMsg = document.getElementById("error-msg");
 const searchPhone = () => {
     const searchInput = document.getElementById("search-field");
 
     const searchText = searchInput.value;
-    searchInput.value = '';
 
-    const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`
-    fetch(url)
-        .then(res => res.json())
-        .then(data => displayPhone(data.data))
+    if (searchText === '') {
+        errorMsg.style.display = 'block';
+    }
+    else {
+        errorMsg.style.display = 'none';
+        // clear data 
+        searchInput.value = '';
+        // load data 
+        const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`
+        fetch(url)
+            .then(res => res.json())
+            .then(data => displayPhone(data.data))
+    }
+
 }
 
 const displayPhone = data => {
     const phoneDetails = document.getElementById("search-phone");
+    phoneDetails.textContent = '';
     for (const singleData of data.slice(0, 20)) {
         const div = document.createElement("div");
         div.classList.add("col");
@@ -34,16 +44,17 @@ const displayPhone = data => {
 
 }
 
-const loadPhoneDetail = id =>{
+const loadPhoneDetail = id => {
     const url = `https://openapi.programming-hero.com/api/phone/${id}`
     fetch(url)
         .then(res => res.json())
         .then(data => displayPhoneDetail(data.data))
 }
 
-const displayPhoneDetail = phone =>{
+const displayPhoneDetail = phone => {
     const phoneMoreDetails = document.getElementById("phone-details");
-    const div= document.createElement("div");
+    phoneMoreDetails.textContent = '';
+    const div = document.createElement("div");
     div.classList.add("card");
     div.innerHTML = `
             <img src="${phone.image}" class="card-img-top" alt="...">
@@ -54,5 +65,5 @@ const displayPhoneDetail = phone =>{
             </div>
     `;
     phoneMoreDetails.appendChild(div);
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
 }
