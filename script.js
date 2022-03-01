@@ -1,12 +1,19 @@
 const errorMsg = document.getElementById("error-msg");
+const phoneDetails = document.getElementById("search-phone");
+const searchInput = document.getElementById("search-field");
+
+
 const searchPhone = () => {
-    const searchInput = document.getElementById("search-field");
-
     const searchText = searchInput.value;
-
     if (searchText === '') {
+        phoneDetails.textContent = '';
         errorMsg.style.display = 'block';
     }
+   else if (searchText !== phoneDetails.textContent){
+    phoneDetails.textContent = '';
+    errorMsg.style.display = 'block';
+
+   }
     else {
         errorMsg.style.display = 'none';
         // clear data 
@@ -21,7 +28,6 @@ const searchPhone = () => {
 }
 
 const displayPhone = data => {
-    const phoneDetails = document.getElementById("search-phone");
     phoneDetails.textContent = '';
     for (const singleData of data.slice(0, 20)) {
         const div = document.createElement("div");
