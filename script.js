@@ -1,3 +1,4 @@
+
 const errorMsg = document.getElementById("error-msg");
 const errorMsgValue = document.getElementById("error-msg-value");
 const phoneDetails = document.getElementById("search-phone");
@@ -6,6 +7,7 @@ const phoneMoreDetails = document.getElementById("phone-details");
 
 const searchPhone = () => {
     const searchText = searchInput.value;
+    // search input can't be empty 
     if (searchText === '') {
         phoneDetails.textContent = '';
         errorMsgValue.style.display = 'none';
@@ -23,6 +25,7 @@ const searchPhone = () => {
         fetch(url)
             .then(res => res.json())
             .then(data => {
+                // unknown value handle 
                 if (data.data[0] === undefined) {
                     phoneDetails.textContent = '';
                     errorMsg.style.display = 'none';
@@ -39,6 +42,7 @@ const searchPhone = () => {
 
 }
 
+// get required phone section 
 const displayPhone = data => {
     phoneDetails.textContent = '';
     phoneMoreDetails.textContent = '';
@@ -57,18 +61,19 @@ const displayPhone = data => {
 
                 `;
         phoneDetails.appendChild(div);
-        // console.log(singleData)
 
     }
 
 }
 
+// phone details section 
 const loadPhoneDetail = id => {
     const url = `https://openapi.programming-hero.com/api/phone/${id}`
     fetch(url)
         .then(res => res.json())
         .then(data => displayPhoneDetail(data.data))
 }
+
 
 const displayPhoneDetail = phone => {
     console.log(phone)
@@ -78,18 +83,16 @@ const displayPhoneDetail = phone => {
     div.innerHTML = `
             <img src="${phone.image}" class="card-img-top w-50 mx-auto" alt="...">
             <div class="card-body">
-            
               <p class="card-text">
-              Release Date: ${phone.releaseDate ? phone.releaseDate :' realese date not fouund'}</p>
-            
               <h5 class="card-title">${phone.name}</h5>
+              Release Date: ${phone.releaseDate ? phone.releaseDate :'No realese date found'}</p>
               <h6>Main Features </h6>
               <p class="card-text">Storage: ${phone.mainFeatures.storage}</p>
               <p class="card-text">Displaysize: ${phone.mainFeatures.displaySize}</p>
               <p class="card-text">Chipset: ${phone.mainFeatures.chipSet}</p>
               <p class="card-text">Memory: ${phone.mainFeatures.memory}</p>
               <p class="card-text">Sensors: ${phone.mainFeatures.sensors}</p>
-              <h6>others</h6>
+              <h6>Others</h6>
               <p class="card-text">WLAN: ${phone.others.WLAN}</p>
               <p class="card-text">Bluetooth: ${phone.others.Bluetooth}</p>
               <p class="card-text">GPS: ${phone.others.GPS}</p>

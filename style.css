@@ -1,8 +1,15 @@
+
+/* body style  */
+.back-body{
+    background-color: rgb(176, 243, 221);
+}
+
+/* error message style */
 .error{
     color: #fff;
     text-align: center;
     margin: 0 auto;
-    background: #f32121a1;
+    background: #f32121fb;
     margin-top: 20px;
     border-radius: 15px;
     padding: 5px 20px;
