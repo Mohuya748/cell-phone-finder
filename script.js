@@ -41,6 +41,7 @@ const searchPhone = () => {
 
 const displayPhone = data => {
     phoneDetails.textContent = '';
+    phoneMoreDetails.textContent = '';
     for (const singleData of data.slice(0, 20)) {
         const div = document.createElement("div");
         div.classList.add("col");
@@ -56,7 +57,7 @@ const displayPhone = data => {
 
                 `;
         phoneDetails.appendChild(div);
-        console.log(singleData)
+        // console.log(singleData)
 
     }
 
@@ -70,16 +71,24 @@ const loadPhoneDetail = id => {
 }
 
 const displayPhoneDetail = phone => {
-
+    console.log(phone)
     phoneMoreDetails.textContent = '';
     const div = document.createElement("div");
     div.classList.add("card");
     div.innerHTML = `
             <img src="${phone.image}" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+            
+              <p class="card-text">
+              Release Date: ${phone.releaseDate ? phone.releaseDate :' realese date not fouund'}</p>
+            
+              <h5 class="card-title">${phone.name}</h5>
+              <h6>Main Features </h6>
+              <p class="card-text">Storage: ${phone.mainFeatures.storage}</p>
+              <p class="card-text">Displaysize: ${phone.mainFeatures.displaySize}</p>
+              <p class="card-text">Chipset: ${phone.mainFeatures.chipSet}</p>
+              <p class="card-text">Memory: ${phone.mainFeatures.memory}</p>
+              <h6>others</h6>
             </div>
     `;
     phoneMoreDetails.appendChild(div);
