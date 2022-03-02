@@ -85,6 +85,7 @@ const displayPhoneDetail = phone => {
             <div class="card-body">
               <p class="card-text">
               <h5 class="card-title">${phone.name}</h5>
+              <h6 class="card-title">${phone.brand}</h6>
               Release Date: ${phone.releaseDate ? phone.releaseDate :'No realese date found'}</p>
               <h6>Main Features </h6>
               <p class="card-text">Storage: ${phone.mainFeatures.storage}</p>
@@ -93,12 +94,12 @@ const displayPhoneDetail = phone => {
               <p class="card-text">Memory: ${phone.mainFeatures.memory}</p>
               <p class="card-text">Sensors: ${phone.mainFeatures.sensors}</p>
               <h6>Others</h6>
-              <p class="card-text">WLAN: ${phone.others.WLAN}</p>
-              <p class="card-text">Bluetooth: ${phone.others.Bluetooth}</p>
-              <p class="card-text">GPS: ${phone.others.GPS}</p>
-              <p class="card-text">NFC: ${phone.others.NFC}</p>
-              <p class="card-text">Radio: ${phone.others.Radio}</p>
-              <p class="card-text">USB: ${phone.others.Radio}</p>
+              <p class="card-text">WLAN: ${phone?.others?.WLAN ? phone.others.WLAN:'No info'}</p>
+              <p class="card-text">Bluetooth: ${phone?.others?.Bluetooth ? phone.others.Bluetooth:'No info' }</p>
+              <p class="card-text">GPS: ${phone?.others?.GPS ? phone.others.GPS:'No info'}</p>
+              <p class="card-text">NFC: ${phone?.others?.NFC ? phone.others.NFC:'No info'}</p>
+              <p class="card-text">Radio: ${phone?.others?.Radio ? phone.others.Radio:'No info'}</p>
+              <p class="card-text">USB: ${phone?.others?.Radio ? phone.others.Radio:'No info'}</p>
             </div>
     `;
     phoneMoreDetails.appendChild(div);
