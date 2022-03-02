@@ -1,28 +1,40 @@
 const errorMsg = document.getElementById("error-msg");
+const errorMsgValue = document.getElementById("error-msg-value");
 const phoneDetails = document.getElementById("search-phone");
 const searchInput = document.getElementById("search-field");
-
+const phoneMoreDetails = document.getElementById("phone-details");
 
 const searchPhone = () => {
     const searchText = searchInput.value;
     if (searchText === '') {
         phoneDetails.textContent = '';
+        errorMsgValue.style.display = 'none';
         errorMsg.style.display = 'block';
+        phoneMoreDetails.textContent = '';
     }
-   else if (searchText !== phoneDetails.textContent){
-    phoneDetails.textContent = '';
-    errorMsg.style.display = 'block';
 
-   }
     else {
         errorMsg.style.display = 'none';
+        errorMsgValue.style.display = 'none';
         // clear data 
         searchInput.value = '';
         // load data 
         const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`
         fetch(url)
             .then(res => res.json())
-            .then(data => displayPhone(data.data))
+            .then(data => {
+                if (data.data[0] === undefined) {
+                    phoneDetails.textContent = '';
+                    errorMsg.style.display = 'none';
+                    errorMsgValue.style.display = 'block';
+                    phoneMoreDetails.textContent = '';
+
+                }
+                else {
+                    displayPhone(data.data)
+                }
+            })
+
     }
 
 }
@@ -58,7 +70,7 @@ const loadPhoneDetail = id => {
 }
 
 const displayPhoneDetail = phone => {
-    const phoneMoreDetails = document.getElementById("phone-details");
+
     phoneMoreDetails.textContent = '';
     const div = document.createElement("div");
     div.classList.add("card");
