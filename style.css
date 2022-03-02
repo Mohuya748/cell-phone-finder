@@ -15,3 +15,22 @@
     padding: 5px 20px;
     display: none;
 }
+ /* input abd button style  */
+.conv-button:hover {
+background-color: rgb(7, 89, 136);
+box-shadow: 0px 15px 20px  rgb(7, 89, 136);
+color: #fff;
+transform: translateY(-7px);
+}
+   
+.conv-button:active {
+    transform: translateY(-1px);
+}
+
+input:hover,input:focus{
+    color: white;
+    font-size: 18px;
+    font-weight: 400;
+    background: rgba(128, 224, 149, 0.945);
+    transition: .5s ease-in-out;
+}

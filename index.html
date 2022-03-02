@@ -23,9 +23,9 @@
     <h3 class="text-center text-success p-2">Search Your Favourite Phone Here!</h1>
         <!-- searchbox  -->
         <div class="input-group mb-3 mx-auto w-50">
-            <input type="text" class="form-control" placeholder="Search which phone do you want" aria-label="food name"
+            <input type="text" class="form-control border-2 border-success" placeholder="Search which phone do you want" aria-label="food name"
                 aria-describedby="button-search" id="search-field">
-            <button class="btn btn-outline-secondary" type="button" id="button-search"
+            <button class="btn btn-outline-secondary conv-button" type="button" id="button-search"
                 onclick="searchPhone()">Search</button>
         </div>
 
@@ -34,12 +34,12 @@
             <p id="error-msg" class="error"> Please input your favourite phone:(</p>
             <p id="error-msg-value" class="error">NO PHONE AVAILABLE ON THIS NAME:(</p>
         </div>
-
-        <!-- card section  -->
-        <div id="phone-details" class="w-50 mx-auto p-4 col col-lg-3 col-sm-1">
+ <!-- phone details  -->
+        
+        <div id="phone-details" class="w-sm-75 w-50  mx-auto p-4 col col-lg-3 col-sm-1">
         </div>
-        <!-- phone details  -->
-        <div class="row row-cols-1 row-cols-md-3 g-4 mx-auto w-75" id="search-phone">
+       <!-- card section  -->
+        <div class="row row-cols-1 row-cols-lg-3 g-4 mx-auto w-75" id="search-phone">
         </div>
 
 

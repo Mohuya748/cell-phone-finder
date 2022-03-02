@@ -14,7 +14,6 @@ const searchPhone = () => {
         errorMsg.style.display = 'block';
         phoneMoreDetails.textContent = '';
     }
-
     else {
         errorMsg.style.display = 'none';
         errorMsgValue.style.display = 'none';
@@ -31,15 +30,12 @@ const searchPhone = () => {
                     errorMsg.style.display = 'none';
                     errorMsgValue.style.display = 'block';
                     phoneMoreDetails.textContent = '';
-
                 }
                 else {
                     displayPhone(data.data)
                 }
             })
-
     }
-
 }
 
 // get required phone section 
@@ -58,12 +54,9 @@ const displayPhone = data => {
                       <a class="btn btn-primary" onclick="loadPhoneDetail('${singleData.slug}')" href="#" role="button" >Details</a>
                     </div>
                    </div>
-
                 `;
         phoneDetails.appendChild(div);
-
     }
-
 }
 
 // phone details section 
@@ -73,7 +66,6 @@ const loadPhoneDetail = id => {
         .then(res => res.json())
         .then(data => displayPhoneDetail(data.data))
 }
-
 
 const displayPhoneDetail = phone => {
     console.log(phone)
