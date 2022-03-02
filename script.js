@@ -76,7 +76,7 @@ const displayPhoneDetail = phone => {
     const div = document.createElement("div");
     div.classList.add("card");
     div.innerHTML = `
-            <img src="${phone.image}" class="card-img-top" alt="...">
+            <img src="${phone.image}" class="card-img-top w-50 mx-auto" alt="...">
             <div class="card-body">
             
               <p class="card-text">
@@ -88,7 +88,14 @@ const displayPhoneDetail = phone => {
               <p class="card-text">Displaysize: ${phone.mainFeatures.displaySize}</p>
               <p class="card-text">Chipset: ${phone.mainFeatures.chipSet}</p>
               <p class="card-text">Memory: ${phone.mainFeatures.memory}</p>
+              <p class="card-text">Sensors: ${phone.mainFeatures.sensors}</p>
               <h6>others</h6>
+              <p class="card-text">WLAN: ${phone.others.WLAN}</p>
+              <p class="card-text">Bluetooth: ${phone.others.Bluetooth}</p>
+              <p class="card-text">GPS: ${phone.others.GPS}</p>
+              <p class="card-text">NFC: ${phone.others.NFC}</p>
+              <p class="card-text">Radio: ${phone.others.Radio}</p>
+              <p class="card-text">USB: ${phone.others.Radio}</p>
             </div>
     `;
     phoneMoreDetails.appendChild(div);
